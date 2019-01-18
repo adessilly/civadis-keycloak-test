@@ -7,6 +7,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
 
+    <title>CIVADIS - Login</title>
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="${url.resourcesPath}/css/login.css">
+    <link rel="stylesheet" type="text/css" href="${url.resourcesPath}/css/checkbox.css">    
+
     <#if properties.meta?has_content>
         <#list properties.meta?split(' ') as meta>
             <meta name="${meta?split('==')[0]}" content="${meta?split('==')[1]}"/>
@@ -33,54 +40,56 @@
 
 <body class="${properties.kcBodyClass!}">
   <div class="${properties.kcLoginClass!}">
-    <div id="kc-header" class="${properties.kcHeaderClass!}">
-      <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}</div>
-    </div>
-    <div class="${properties.kcFormCardClass!} <#if displayWide>${properties.kcFormCardAccountClass!}</#if>">
-      <header class="${properties.kcFormHeaderClass!}">
-        <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-            <div id="kc-locale">
-                <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
-                    <div class="kc-dropdown" id="kc-locale-dropdown">
-                        <a href="#" id="kc-current-locale-link">${locale.current}</a>
-                        <ul>
-                            <#list locale.supported as l>
-                                <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
-                            </#list>
-                        </ul>
-                    </div>
+
+    <div class="login-body">
+
+
+        <div class="login-panel ui-fluid animated fadeIn">
+            <div class="ui-g">
+                <div class="ui-g-12 logo-container">
+                    <img src="${url.resourcesPath}/img/civadis/civadis-dark.svg" class="logo">
+                    <img src="${url.resourcesPath}/img/civadis/icon-login.svg" class="login-icon">
+                    <h2 class="animated fadeInDown slow">Authentification</h2>
                 </div>
+                <div class="ui-civadis-gradiant">
+                    <div class="animated fadeInRight"></div>
+                    <div class="animated fadeInLeft"></div>
+                    <div class="animated fadeInRight"></div>
+                    <div class="animated fadeInLeft"></div>
+                </div>
+
+
+                <div class="login-content">
+
+                    <#if displayMessage && message?has_content>
+                        <div class="alert alert-${message.type}">
+                            <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
+                            <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
+                            <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
+                            <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
+                            <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
+                        </div>
+                    </#if>
+        
+                    <#if displayInfo>
+                        <div id="kc-info" class="${properties.kcSignUpClass!}">
+                            <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
+                                <#nested "info">
+                            </div>
+                        </div>
+                    </#if>
+
+                    <#nested "form">
+
+                </div>
+
+
             </div>
-        </#if>
-        <h1 id="kc-page-title"><#nested "header"></h1>
-      </header>
-      <div id="kc-content">
-        <div id="kc-content-wrapper">
-
-          <#if displayMessage && message?has_content>
-              <div class="alert alert-${message.type}">
-                  <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
-                  <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
-                  <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
-                  <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
-                  <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-              </div>
-          </#if>
-
-          <#nested "form">
-
-          <#if displayInfo>
-              <div id="kc-info" class="${properties.kcSignUpClass!}">
-                  <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
-                      <#nested "info">
-                  </div>
-              </div>
-          </#if>
         </div>
-      </div>
-
-    </div>
-  </div>
+    
+        <div class="login-panel ui-fluid shadow-paper"></div>
+    
+    </div>    
 </body>
 </html>
 </#macro>

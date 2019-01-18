@@ -35,51 +35,49 @@
 }
 
 .login-body .login-panel a {
-    color: #757575;
-    -moz-transition: color 0.3s;
-    -o-transition: color 0.3s;
-    -webkit-transition: color 0.3s;
-    transition: color 0.3s;
-    font-size: 0.7em;
-    text-decoration: none;
-}
-
-.login-body .login-panel a:hover {
     color: #3984b8;
     -moz-transition: color 0.3s;
     -o-transition: color 0.3s;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
-    font-size: 0.7em;
-    text-decoration: none;
+    font-size: 0.8em;
+    text-decoration: underline;
 }
+
+
 
 .input-wrapper {
     position: relative;
 }
 
-button {
+button, input[type="submit"] {
     background-color: #3984b8;
     border: 1px solid transparent;
     color:white;
     border-radius:2px;
     font-size: 13px;
+    padding: 12px;
     -moz-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
     -webkit-transition: background-color 0.3;
     transition: background-color 0.3s;
     cursor: pointer;
     margin-bottom: 20px;
+    margin-top:5px;
+    width: 100%;
+    outline: none;
 }
 
-button:hover {
+button:hover, input[type="submit"]:hover {
     background-color: #3376a5;
+    padding: 12px;
+    width: 100%;
 }
 
-.login-panel input {
-    padding: .985em;
+.login-panel input[type="text"], .login-panel input[type="password"] {
+    outline: none;
     background: #ffffff;
-    padding: 0.385em;
+    padding: 12px;
     border: 1px solid #bdc3c9;
     -moz-transition: border-color 0.3s;
     -o-transition: border-color 0.3s;
@@ -112,8 +110,16 @@ button:hover {
     border-color: #3984b8;
 }
 
-.login-panel .ui-g-12 {
+.login-panel label {
+    font-size:0.9em;
+}
+
+.login-panel .login-content {
     padding: 15px 100px;
+}
+
+.login-panel .input-wrapper, form>div {
+    margin-top: 15px;
 }
 
 div.login-body {
@@ -123,8 +129,7 @@ div.login-body {
     width:100%;
     height:100%;
 }
-.login-body input {
-    padding: 12px;
+.login-body input[type="text"], .login-body input[type="submit"], .login-body input[type="password"] {
     width: 100%;
     box-sizing: border-box;
 }
@@ -135,19 +140,14 @@ div.login-body {
     border-color: #4397d3;
 }
 
-.login-body .btn-connexion {
-    padding: 12px;
-    width: 100%;
-}
-
 .login-body .login-panel .input-wrapper .fa {
     position: absolute;
     top: 14px;
     right: 12px;
     font-size:1.1em;
 }
-.login-body {
-    background: url('/resources/img/civadis/bg-login.jpg');
+body {
+    background: url('../img/civadis/bg-login.jpg');
     background-size: cover;
     height: auto;
 }
@@ -161,7 +161,7 @@ div.login-body {
     height: 22px;
     width: 100%;
     max-width:600px;
-    background: url('/resources/img/civadis/shadow.png') top -4px center/contain no-repeat;
+    background: url('../img/civadis/shadow.png') top -4px center/contain no-repeat;
     -moz-opacity: .6;
     opacity: .6;
     filter: alpha(opacity=60);
@@ -205,4 +205,42 @@ div.login-body {
 .ui-civadis-gradiant>div:nth-child(4) {
     background:#A1ADB4;
     animation-delay: .8s;
+}
+
+.alert {
+    background: #d94745bb;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8em;
+}
+
+#kc-info {
+    background: #A1ADB422;
+    color: #777;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+.alert+#kc-info {
+    margin-top: 10px;
+}
+
+#kc-registration {
+    text-align: center;
+}
+
+#kc-registration a {
+    color: #3984b8;
+    text-decoration: underline;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 1em;
+}
+
+#kc-form-options a {
+    padding-bottom: 3px;
+    display: inline-block;
+    font-size: 0.9em;
 }
