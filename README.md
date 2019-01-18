@@ -6,6 +6,7 @@ Installer le répertoire `civadis/` dans le le repertoire theme de keycloak `key
 Installer Docker, ensuite jouer `docker-compose up`, cela va instancier une image keycloak avec le theme civadis préconfiguré, sur le port `8083`, vous pouvez donc ensuite tester sur : `http://localhost:8083`
 ## Installation sur projet local Docker
 Pour sur votre environnement de développement, dans votre docker-compose, liez le volume afin qu'il point sur le theme civadis : 
+```
     version: '2'
     services:
     keycloak:
@@ -18,5 +19,6 @@ Pour sur votre environnement de développement, dans votre docker-compose, liez 
     - "KEYCLOAK_WELCOME_THEME=civadis"
     volumes:
     - ./civadis/:/opt/jboss/keycloak/themes/civadis/
+```
 ## Support
 Equipe CSD
